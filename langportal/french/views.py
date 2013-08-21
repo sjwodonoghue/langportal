@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.template import Context, loader
-from french.models import dictionary
+from models import dictionary
 from random import randint
 from django.db.models import Max, Min
+from django.http import HttpResponse, HttpResponseRedirect
+from django.core.urlresolvers import reverse
+
 
 def index(request):
     
@@ -41,6 +44,16 @@ def wordtest(request):
     context = Context({'word_details': word_details})
     return render(request, 'french/wordtest.html', context)
 
+
+def checkanswers(request):
+    #    get POST data
+    #    get the key values of the POST querydict object, these are also the words we are asking the user to translate
+    testwords = request.POST.keys()
+    context = Context({
+        'testwords': testwords
+    })
+    #return render(request, 'french/checkanswers.html', context)
+    return HttpResponseRedirect(reverse('french/checkanswers.html'))
 
 
 

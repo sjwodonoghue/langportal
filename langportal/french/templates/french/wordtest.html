@@ -39,7 +39,7 @@
     				{% if word_details %}
 					<form action="/french/checkanswers/" method="post">
 						{% csrf_token %} 
-        					Please enter your answer:  <input type="text" name="{{ word_details.english }}" id="testword" />
+        					Please enter your answer:  <input type="text" name="{{ word_details.english }}" id="{{ word_details.id }}" />
     				<input type="submit" value="Check Answers" />
 					</form>
 					{% else %}
