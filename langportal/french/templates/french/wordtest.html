@@ -30,14 +30,29 @@
             </div>
 
 			<div class="hero-unit">
-    			<h1>English: {{ word_details.english }} <p>  ----------------  </p> French: {{ french }}</h1>
-    				<h1>  ----------------  </h1>
-    				<p>{{ word_details.type }}</p>
-    				<h1>  ----------------  </h1>
+    				<h1>English: {{ word_details.english }}</h1>
+    				<p>  ----------------  </p>
+    				<p>Type: {{ word_details.type }}</p>
+    				<p>  ----------------  </p>
     				<p>Description: {{ word_details.description }}</p>
+    				
+    				{% if word_details %}
+					<form action="/french/checkanswers/" method="post">
+						{% csrf_token %} 
+        					Please enter your answer:  <input type="text" name="{{ word_details.english }}" id="testword" />
+    				<input type="submit" value="Check Answers" />
+					</form>
+					{% else %}
+    					<p>No words are available.</p>
+					{% endif %}
     				<a href="{% url 'french.views.index' %}" class="btn btn-large btn-success">New Word</a>
 			 </div>
 		</div>
 
 	</body>	
 <html>
+
+
+
+
+
