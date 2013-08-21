@@ -58,8 +58,10 @@ def checkanswers(request):
     response = ''
     if french == user_answer:
         response = 'correct'
+        extra = ''
     else:
         response = 'incorrect'
+        extra = "The correct answer is: " + french 
     
     vals.append(testwords)
     vals.append(user_answer)
@@ -67,7 +69,7 @@ def checkanswers(request):
     vals.append(french)
     vals.append(response)
     context = Context({
-        'response': response    
+        'response': response, 'extra':extra  
     })
     return render(request, 'french/checkanswers.html', context)
     #return HttpResponseRedirect(reverse('checkanswers.html'))
