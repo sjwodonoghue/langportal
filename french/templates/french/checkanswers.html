@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"> 
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		{% load staticfiles %}
+		<link rel="stylesheet" href="{% static "french/css/bootstrap.css" %}"  type="text/css"/>
+		<title>French Langportal</title>
+	</head>
+
+	<body>
+		{% load staticfiles %}
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="{% static "french/js/bootstrap.js" %}"></script>
+
+		<div class="container">
+			<h1><a href="#">French Langportal	</a></h1>
+
+			<div class="navbar">
+              	<div class="navbar-inner">
+               		<div class="container">
+                  		<ul class="nav">
+                    		<li class="active"><a href="{% url 'french:index' %}">Home</a></li>
+                    		<li><a href="{% url 'french:wordtest' %}">Test</a></li>	
+                    		<li><a href="#">About</a></li>
+                    		<li><a href="#">Contact</a></li>
+                  		</ul>
+                	</div>
+        	     </div>
+            </div>
+
+			<div class="hero-unit">
+    				<h1>Your answer was  {{ response }}</h1>
+    				</br>
+    				<a href="{% url 'french:index' %}" class="btn btn-large btn-success">New Word</a>
+    				<a href="{% url 'french:wordtest' %}" class="btn btn-large btn-success">New Test</a>
+
+			 </div>
+		</div>
+
+	</body>	
+<html>
