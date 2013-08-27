@@ -71,7 +71,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    # Don't forget to use absolute paths, not relative paths.    
 )
 
 # List of finder classes that know how to find static files in
@@ -86,6 +86,7 @@ STATICFILES_FINDERS = (
 SECRET_KEY = '1mkcuvbyf3d058p)$g2a$=h+9_fp^su42vgl9-&-ai+diaz7l$'
 
 # List of callables that know how to import templates from various sources.
+
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',

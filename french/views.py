@@ -22,21 +22,21 @@ def auth_view(request):
     
     if user is not None:
         auth.login(request, user)
-        return HttpResponseRedirect('french/loggedin.html')
+        return HttpResponseRedirect('french/loggedin')
     else:
-        return HttpResponseRedirect('french/invalid.html')
-        return HttpResponseRedirect(reverse('french:loggedin'))
+        return HttpResponseRedirect('invalid_login.html')
     
 def loggedin(request):
-    return render_to_response('french/loggedin.html', 
+    return render_to_response('loggedin.html', 
                               {'full_name': request.user.username})
 
 def invalid_login(request):
-    return render_to_response('french/nvalid_login.html')
+        return render_to_response('invalid_login.html')
+   
 
 def logout(request):
     auth.logout(request)
-    return render_to_response('french/logout.html')
+    return render_to_response('logout.html')
 
 
 

@@ -1,56 +1,27 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8"> 
-		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-		{% load staticfiles %}
-		<link rel="stylesheet" href="{% static "french/css/bootstrap.css" %}"  type="text/css"/>
-		<title>French Langportal</title>
-	</head>
+{% extends "base.html" %}
 
-	<body>
-		{% load staticfiles %}
-		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-		<script src="{% static "french/js/bootstrap.js" %}"></script>
+{% block title %}Complete the Test!{% endblock %}
 
-		<div class="container">
-			<h1><a href="#">French Langportal	</a></h1>
 
-			<div class="navbar">
-              	<div class="navbar-inner">
-               		<div class="container">
-                  		<ul class="nav">
-                    		<li class="active"><a href="{% url 'french:index' %}">Home</a></li>
-                    		<li><a href="{% url 'french:wordtest' %}">Test</a></li>	
-                    		<li><a href="#">About</a></li>
-                    		<li><a href="#">Contact</a></li>
-                  		</ul>
-                	</div>
-        	     </div>
-            </div>
 
-			<div class="hero-unit">
-    				<h1>English: {{ word_details.english }}</h1>
-    				<p>  ----------------  </p>
-    				<p>Type: {{ word_details.type }}</p>
-    				<p>  ----------------  </p>
-    				<p>Description: {{ word_details.description }}</p>
-    				
-    				{% if word_details %}
-					<form action="{% url 'french:checkanswers' %}" method="post">
-						{% csrf_token %} 
-        					Please enter your answer:  <input type="text" name="{{ word_details.id }}" id="word" />
-    				<input type="submit" value="Check Answers" />
-					</form>
-					{% else %}
-    					<p>No words are available.</p>
-					{% endif %}
-    				<a href="{% url 'french:index' %}" class="btn btn-large btn-success">New Word</a>
-			 </div>
-		</div>
+    			{% block content1 %} <h1> English: {{ word_details.english }} </h1> {% endblock %}
+                
+    			{% block content2 %} <h1> Description: {{ word_details.description }}</h1> {% endblock %}
+    			{% block content3 %} <h1> Type: {{ word_details.type }}</h1> {% endblock %}
+    			{% block content4 %} 
+    								{% if word_details %}
+											<form action="{% url 'french:checkanswers' %}" method="post">
+											{% csrf_token %} 
+        									Please enter your answer:  <input type="text" name="{{ word_details.id }}" id="word" />
+    										<input type="submit" value="Check Answers" />		
+											</form>
+									{% else %}
+    										<p>No words are available.</p>
+									{% endif %}
+    	    	{% endblock %}
 
-	</body>	
-<html>
+  				{% block content5 %}<a href="{% url 'french:index' %}" class="btn btn-large btn-success">New Word</a> {% endblock %}
+
 
 
 
