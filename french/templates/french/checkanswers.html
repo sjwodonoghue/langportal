@@ -3,14 +3,12 @@
 {% block title%}Check Your Answers!{% endblock %}
 
 
-{% block content %}
 
-	<div class="hero-unit">
-			<h1>Your answer was  {{ response }}</h1>
-			<p>{{ extra }}</p>
-			</br>
-			<a href="{% url 'french:index' %}" class="btn btn-large btn-success">New Word</a>
-			<a href="{% url 'french:wordtest' %}" class="btn btn-large btn-success">New Test</a>
-	</div>
 
-{% endblock %}
+
+			{% block content1 %}<h1>Your answer was  {{ response }}</h1>{% endblock %}
+			{% block content2 %}<p>{{ extra }}</p>{% endblock %}
+			{% block content4 %}<a href="{% url 'french:index' %}" class="btn btn-large btn-success">New Word</a>{% endblock %}
+			{% block content5 %}<a href="{% url 'french:wordtest' %}" class="btn btn-large btn-success">New Test</a>{% endblock %}
+
+

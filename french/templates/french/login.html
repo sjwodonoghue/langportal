@@ -1,14 +1,20 @@
+{% extends "base.html" %}
 
 
 
 
-<form action="{% url 'french:auth' %}" method="post">
-{% csrf_token %}
+
+{% block content1 %}
+	<form action="{% url 'french:auth' %}" method="post">
+	{% csrf_token %}
     <label for="username">User name:</label>
     <input type="text" name="username" value="" id="username">
+{% endblock %}
+
+{% block content2 %}
     <label for="password">Password:</label>
     <input type="password" name="password" value="" id="password">
     <input type="submit" value="login" />
-    
 </form>
+{% endblock %}
 
