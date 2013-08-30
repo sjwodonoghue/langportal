@@ -1,19 +1,20 @@
-from django.shortcuts import render
-from django.template import Context, loader
+from django.shortcuts import render, render_to_response
+from django.template import Context
 from models import dictionary
 from random import randint
 from django.db.models import Max, Min
-from django.http import HttpResponse, HttpResponseRedirect
-from django.core.urlresolvers import reverse
-from django.shortcuts import render_to_response
+from django.http import HttpResponseRedirect
 from django.contrib import auth
 from django.core.context_processors import csrf
+from forms import MyRegistrationForm
+
 
 
 def login(request):
     c = {}
     c.update(csrf(request))    
     return render_to_response('french/login.html', c)
+    
     
 def auth_view(request):
     username = request.POST.get('username', '')
@@ -22,22 +23,49 @@ def auth_view(request):
     
     if user is not None:
         auth.login(request, user)
-        return HttpResponseRedirect('french/loggedin')
+        return HttpResponseRedirect('/french/loggedin')
     else:
-        return HttpResponseRedirect('invalid_login.html')
+        return HttpResponseRedirect('/french/invalid_login')
+    
     
 def loggedin(request):
-    return render_to_response('loggedin.html', 
+    return render_to_response('french/loggedin.html', 
                               {'full_name': request.user.username})
 
 def invalid_login(request):
-        return render_to_response('invalid_login.html')
+        return render_to_response('french/invalid_login.html')
    
 
 def logout(request):
     auth.logout(request)
     return render_to_response('logout.html')
 
+
+
+def register_user(request):
+    if request.method == 'POST':
+        form = MyRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/french/register_success')
+        
+    else:
+        form = MyRegistrationForm()
+    args = {}
+    args.update(csrf(request))
+    
+    args['form'] = form
+    
+    return render_to_response('register.html', args)
+
+
+def register_success(request):
+    return render_to_response('register_success.html')
+
+
+
+
+    
 
 
 

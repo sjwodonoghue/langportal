@@ -8,7 +8,6 @@
 
 			{% block content1 %}<h1>Your answer was  {{ response }}</h1>{% endblock %}
 			{% block content2 %}<p>{{ extra }}</p>{% endblock %}
-			{% block content4 %}<a href="{% url 'french:index' %}" class="btn btn-large btn-success">New Word</a>{% endblock %}
-			{% block content5 %}<a href="{% url 'french:wordtest' %}" class="btn btn-large btn-success">New Test</a>{% endblock %}
-
+			{% block content4 %}<a href="{% url 'french:wordtest' %}" class="btn btn-large btn-success">New Test</a>{% endblock %}
+			{% block content5 %}<a href="{% url 'french:index' %}" class="btn btn-large btn-success">New Word</a>{% endblock %}
 
